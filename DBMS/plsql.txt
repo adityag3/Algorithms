@@ -1,0 +1,188 @@
+//greatest of 3 nos
+set serverout on 
+/
+DECLARE
+   a number;
+    b number;
+   c number;
+  BEGIN
+   a:=&a;
+   b:=&b;
+   c:=&c;
+   IF(a>b) AND (a>c) THEN
+   dbms_output.put_line('a is max');
+   ELSIF (b>a) AND (b>c) THEN
+   dbms_output.put_line('b is max');
+   ELSE
+   dbms_output.put_line('c is max');
+   END IF;
+   END;
+/
+Enter value for a: 10
+old   6:    a:=&a;
+new   6:    a:=10;
+Enter value for b: 20
+old   7:    b:=&b;
+new   7:    b:=20;
+Enter value for c: 30
+old   8:    c:=&c;
+new   8:    c:=30;
+c is max
+
+PL/SQL procedure successfully completed.
+
+//sum and avg of 3 nos
+set serveroutput on
+ declare
+ a number:=&a;
+ b number:=&b;
+ c number:=&c;
+ sm number;
+ av number;
+ begin
+ sm:=a+b+c;
+ av:=sm/3;
+ dbms_output.put_line('Sum = '||sm);
+ dbms_output.put_line('Average = '||av);
+ end;
+ /
+Enter value for a: 20
+old   2: a number:=&a;
+new   2: a number:=20;
+Enter value for b: 20
+old   3: b number:=&b;
+new   3: b number:=20;
+Enter value for c: 20
+old   4: c number:=&c;
+new   4: c number:=20;
+Sum = 60
+Average = 20
+
+PL/SQL procedure successfully completed.
+
+
+
+
+//fibonacci series
+set serverout on
+declare
+a number:= 0 ;
+b number:= 1;
+c number;
+begin
+dbms_output.put(a||' '||b||' ');
+for i in 3..10 loop
+c := a + b;
+dbms_output.put(c||' ');
+a := b;
+b := c;
+end loop;
+dbms_output.put_line(' ');
+end;
+/
+0 1 1 2 3 5 8 13 21 34
+
+PL/SQL procedure successfully completed.
+
+
+//factorial
+set serverout on
+declare
+n number;
+i number;
+f number:=1;
+begin
+n:=&n;
+for i in 1..n
+loop
+f:=f*i;
+end loop;
+dbms_output.put_line(n||'! = '||f);
+end;
+/
+Enter value for n: 4
+old   6: n:=&n;
+new   6: n:=4;
+4! = 24
+
+PL/SQL procedure successfully completed.
+
+
+//WAP to input height of a person and det whether he is tall,short,avg,abnormal
+set serverout on
+declare
+n number;
+begin
+n:=&n;
+if(n>170) and (n<180) then
+   dbms_output.put_line('average height');
+elsif (n<170) and (n>130) then
+   dbms_output.put_line('short');
+elsif (n>180) and (n<200) then
+   dbms_output.put_line('tall');
+else
+   dbms_output.put_line('abnormal');
+end if;
+end;
+/
+Enter value for n: 100
+old   4: n:=&n;
+new   4: n:=100;
+abnormal
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 140
+old   4: n:=&n;
+new   4: n:=140;
+short
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 178
+old   4: n:=&n;
+new   4: n:=178;
+average height
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 188
+old   4: n:=&n;
+new   4: n:=188;
+tall
+
+PL/SQL procedure successfully completed.
+
+//WAP to det bonus
+set serverout on
+declare
+salary number;
+gender char(1);
+bonus number;
+begin
+salary:=&salary;
+gender:='&gender';
+if (salary<10000) then
+bonus:=salary*0.02;
+end if;
+if (gender='f') then
+bonus:=bonus+(salary*0.1);
+else
+bonus:=bonus+(salary*0.05);
+end if;
+salary:=salary+bonus;
+dbms_output.put_line('salary is:'||salary);
+end;
+/
+Enter value for salary: 7000
+old   6: salary:=&salary;
+new   6: salary:=7000;
+Enter value for gender: f
+old   7: gender:='&gender';
+new   7: gender:='f';
+salary is:7840
+
+PL/SQL procedure successfully completed.
